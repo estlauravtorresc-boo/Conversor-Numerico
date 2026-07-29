@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conversor de Sistemas Numéricos</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="contenedor">
+
+    <div class="encabezado">
+
+        <h1><i class="fa-solid fa-microchip"></i> Conversor de Sistemas Numéricos</h1>
+
+        <p>
+            Ingeniería Mecatrónica · Digitales
+        </p>
+
+    </div>
+
+    {% if mensaje %}
+
+    <div class="{{tipo}}">
+
+        {% if tipo=="success" %}
+
+            <i class="fa-solid fa-circle-check"></i>
+
+        {% else %}
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+        {% endif %}
+
+        {{mensaje}}
+
+    </div>
+
+    {% endif %}
+
+    <form action="/" method="POST">
+        <div class="grupo">
+
+            <label>
+
+                <i class="fa-solid fa-keyboard"></i>
+
+                Número
+
+            </label>
+
+            <input
+
+                id="numero"
+
+                type="text"
+
+                name="numero"
+
+                value="{{numero}}"
+
+                placeholder="Ingrese un número"
+
+                autocomplete="off"
+
+                required>
+
+        </div>
+
+        <div class="grupo">
+
+            <label>
+
+                <i class="fa-solid fa-shuffle"></i>
+
+                Conversión
+
+            </label>
+
+            <select id="conversion" name="conversion">
+
+                <option value="DecBin" {% if conversion=="DecBin" %}selected{% endif %}>
+                    Decimal → Binario
+                </option>
+
+                <option value="DecHex" {% if conversion=="DecHex" %}selected{% endif %}>
+                    Decimal → Hexadecimal
+                </option>
+
+                <option value="BinDec" {% if conversion=="BinDec" %}selected{% endif %}>
+                    Binario → Decimal
+                </option>
+
+                <option value="HexDec" {% if conversion=="HexDec" %}selected{% endif %}>
+                    Hexadecimal → Decimal
+                </option>
+
+                <option value="BinHex" {% if conversion=="BinHex" %}selected{% endif %}>
+                    Binario → Hexadecimal
+                </option>
+
+                <option value="HexBin" {% if conversion=="HexBin" %}selected{% endif %}>
+                    Hexadecimal → Binario
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="botones">
+
+            <button class="convertir" type="submit">
+
+             <i class="fa-solid fa-rotate"></i>
+
+             Convertir
+
+            </button>
+
+            <button class="limpiar" type="button" onclick="window.location.href='/'">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Limpiar
+
+            </button>
+
+        </div>
+
+    </form>
+
+    {% if resultado %}
+
+    <div class="tarjeta">
+
+        <h2>
+
+            <i class="fa-solid fa-square-poll-horizontal"></i>
+
+            Resultado
+
+        </h2>
+
+        <div class="bloque">
+
+            <h3>Número ingresado</h3>
+
+            <div class="caja">
+
+                {{numero}}
+
+            </div>
+
+        </div>
+
+        <div class="bloque">
+
+            <h3>Procedimiento</h3>
+
+            <div class="procedimiento">
+
+<pre>{{procedimiento}}</pre>
+
+            </div>
+
+        </div>
+
+        <div class="bloque">
+
+            <h3>Resultado Final</h3>
+
+            <div class="resultadoFinal">
+
+                {{resultado}}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
