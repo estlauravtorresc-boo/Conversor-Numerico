@@ -156,7 +156,7 @@ def binario_grey(binario):
     primer_bit = binario[0]
     grey += primer_bit
 
-    procedimiento += f"Primer bit: se copia igual → {primer_bit}\n"
+    procedimiento += f"Primer bit: {primer_bit}\n"
 
     for i in range(1, len(binario)):
         bit_actual = binario[i]
