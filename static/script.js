@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
         BinDec: "Ej: -1101 o 1101",
         HexDec: "Ej: -1F o 1F",
         BinHex: "Ej: -1101 o 1101",
-        HexBin: "Ej: -1F o 1F"
+        HexBin: "Ej: -1F o 1F",
+        BinGrey: "Ej: 1101 (sin signo)",
+        GreyBin: "Ej: 1011 (sin signo)"
     };
 
     function actualizarPlaceholder() {
