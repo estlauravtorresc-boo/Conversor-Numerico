@@ -16,6 +16,10 @@ def es_binario(numero):
     return numero != "" and all(bit in "01" for bit in numero)
 
 
+def es_binario_sin_signo(numero):
+    return numero != "" and all(bit in "01" for bit in numero)
+
+
 def es_hexadecimal(numero):
     if numero.startswith("-"):
         numero = numero[1:]
@@ -96,6 +100,24 @@ def inicio():
                 original, procedimiento, convertido = hexadecimal_binario(numero)
 
                 resultado = f"{original.upper()}₁₆ = {convertido}₂"
+
+            elif conversion == "BinGrey":
+
+                if not es_binario_sin_signo(numero):
+                    raise ValueError("Un número binario solo puede contener 0 y 1 (sin signo negativo).")
+
+                original, procedimiento, convertido = binario_grey(numero)
+
+                resultado = f"{original}₂ = {convertido} (Gray)"
+
+            elif conversion == "GreyBin":
+
+                if not es_binario_sin_signo(numero):
+                    raise ValueError("Un código Gray solo puede contener 0 y 1 (sin signo negativo).")
+
+                original, procedimiento, convertido = grey_binario(numero)
+
+                resultado = f"{original} (Gray) = {convertido}₂"
 
             mensaje = "Conversión realizada correctamente."
             tipo = "success"
